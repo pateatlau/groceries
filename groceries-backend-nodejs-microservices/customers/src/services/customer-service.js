@@ -1,6 +1,6 @@
 const { CustomerRepository } = require('../database');
 const {
-  FormateData,
+  FormatData,
   GeneratePassword,
   GenerateSalt,
   GenerateSignature,
@@ -32,11 +32,11 @@ class CustomerService {
             email: existingCustomer.email,
             _id: existingCustomer._id,
           });
-          return FormateData({ id: existingCustomer._id, token });
+          return FormatData({ id: existingCustomer._id, token });
         }
       }
 
-      return FormateData(null);
+      return FormatData(null);
     } catch (err) {
       throw new APIError('Data Not found', err);
     }
@@ -63,7 +63,7 @@ class CustomerService {
         _id: existingCustomer._id,
       });
 
-      return FormateData({ id: existingCustomer._id, token });
+      return FormatData({ id: existingCustomer._id, token });
     } catch (err) {
       throw new APIError('Data Not found', err);
     }
@@ -80,7 +80,7 @@ class CustomerService {
         city,
         country,
       });
-      return FormateData(addressResult);
+      return FormatData(addressResult);
     } catch (err) {
       throw new APIError('Data Not found', err);
     }
@@ -89,7 +89,7 @@ class CustomerService {
   async GetProfile(id) {
     try {
       const existingCustomer = await this.repository.FindCustomerById({ id });
-      return FormateData(existingCustomer);
+      return FormatData(existingCustomer);
     } catch (err) {
       throw new APIError('Data Not found', err);
     }
@@ -100,9 +100,9 @@ class CustomerService {
       const existingCustomer = await this.repository.FindCustomerById({ id });
 
       if (existingCustomer) {
-        return FormateData(existingCustomer);
+        return FormatData(existingCustomer);
       }
-      return FormateData({ msg: 'Error' });
+      return FormatData({ msg: 'Error' });
     } catch (err) {
       throw new APIError('Data Not found', err);
     }
@@ -111,7 +111,7 @@ class CustomerService {
   async GetWishList(customerId) {
     try {
       const wishListItems = await this.repository.Wishlist(customerId);
-      return FormateData(wishListItems);
+      return FormatData(wishListItems);
     } catch (err) {
       throw new APIError('Data Not found', err);
     }
@@ -123,7 +123,7 @@ class CustomerService {
         customerId,
         product
       );
-      return FormateData(wishlistResult);
+      return FormatData(wishlistResult);
     } catch (err) {
       throw new APIError('Data Not found', err);
     }
@@ -137,7 +137,7 @@ class CustomerService {
         qty,
         isRemove
       );
-      return FormateData(cartResult);
+      return FormatData(cartResult);
     } catch (err) {
       throw new APIError('Data Not found', err);
     }
@@ -149,7 +149,7 @@ class CustomerService {
         customerId,
         order
       );
-      return FormateData(orderResult);
+      return FormatData(orderResult);
     } catch (err) {
       throw new APIError('Data Not found', err);
     }
