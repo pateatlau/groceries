@@ -1,4 +1,4 @@
-# Groceries Online Store App
+# Groceries Online Store Repository
 
 ## Overview
 
