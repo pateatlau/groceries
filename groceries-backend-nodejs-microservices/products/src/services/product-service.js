@@ -79,6 +79,7 @@ class ProductService {
         event,
         data: { userId, productId, qty },
       };
+
       return FormatData(payload);
     } else {
       return FormatData({ error: 'Product not found' });

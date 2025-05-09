@@ -118,6 +118,7 @@ class CustomerService {
   }
 
   async AddToWishlist(customerId, product) {
+    console.log('AddToWishlist: product = ', product);
     try {
       const wishlistResult = await this.repository.AddWishlistItem(
         customerId,
@@ -156,12 +157,21 @@ class CustomerService {
   }
 
   async SubscribeEvents(payload) {
+    // payload = JSON.parse(payload);
     const { event, data } = payload;
     const { userId, product, order, qty } = data;
 
     switch (event) {
       case 'ADD_TO_WISHLIST':
       case 'REMOVE_FROM_WISHLIST':
+        console.log(
+          'ADD_TO_WISHLIST: product = ',
+          product,
+          ', DATA = ',
+          data,
+          ', PAYLOAD = ',
+          payload
+        );
         this.AddToWishlist(userId, product);
         break;
       case 'ADD_TO_CART':
