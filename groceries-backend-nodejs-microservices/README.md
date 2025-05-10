@@ -17,3 +17,7 @@
 - MongoDB
 - RabbitMQ
 - JWT
+
+## BRANCH - rabbitmq-inter-services-comm
+
+This branch is for implementing messaging broker for inter-services communication using RabbitMQ.
