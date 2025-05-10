@@ -3,8 +3,8 @@ const ShoppingService = require('../services/shopping-service');
 module.exports = (app) => {
   const service = new ShoppingService();
 
-  app.use('/app-events', async (requestAnimationFrame, resizeBy, next) => {
-    const { payload } = requestAnimationFrame.body;
+  app.use('/app-events', async (req, res) => {
+    const { payload } = req.body;
 
     service.SubscribeEvents(payload);
 

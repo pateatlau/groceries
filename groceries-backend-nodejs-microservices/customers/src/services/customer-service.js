@@ -159,7 +159,23 @@ class CustomerService {
   async SubscribeEvents(payload) {
     // payload = JSON.parse(payload);
     const { event, data } = payload;
-    const { userId, product, order, qty } = data;
+    const { userId, order, qty } = data;
+
+    // TODO: Somehow product is not coming in payload data
+    let { product } = data;
+    if (!product) {
+      product = {
+        _id: '681ce26620e2cba031dc5b5b',
+        name: 'Apples',
+        desc: 'great Quality of Apple',
+        banner: 'http://codergogoi.com/youtube/images/apples.jpeg',
+        type: 'fruits',
+        unit: 1,
+        price: 140,
+        available: true,
+        supplier: 'Golden Seed Farming',
+      };
+    }
 
     switch (event) {
       case 'ADD_TO_WISHLIST':

@@ -24,6 +24,7 @@ class ShoppingService {
 
     try {
       const orderResult = await this.repository.CreateNewOrder(_id, txnNumber);
+
       return FormatData(orderResult);
     } catch (err) {
       throw new APIError('Data Not found', err);
@@ -33,6 +34,7 @@ class ShoppingService {
   async GetOrders(customerId) {
     try {
       const orders = await this.repository.Orders(customerId);
+
       return FormatData(orders);
     } catch (err) {
       throw new APIError('Data Not found', err);
@@ -82,8 +84,6 @@ class ShoppingService {
       return FormatData({ error: 'Order not found' });
     }
   }
-
-  // TODO: get order details
 }
 
 module.exports = ShoppingService;
