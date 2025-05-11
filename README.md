@@ -10,3 +10,5 @@
 - Backend created with Nodejs, Express, MongoDB, and RabbitMQ with Microservices architecture
 
 2. The backend services consist of Customers, Products, and Shopping. There is also authentication middleware using JWT.
+
+## TODO: Shopping Service - Cart, Wishlist and Order endpoints have got bugs (10th May 2025)

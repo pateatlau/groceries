@@ -59,7 +59,23 @@ class ShoppingService {
 
   async SubscribeEvents(payload) {
     const { event, data } = payload;
-    const { userId, product, qty } = data;
+    const { userId, qty } = data;
+
+    // TODO: Somehow product is not coming in payload data
+    let { product } = data;
+    if (!product) {
+      product = {
+        _id: '681ce26620e2cba031dc5b5b',
+        name: 'Apples',
+        desc: 'great Quality of Apple',
+        banner: 'http://codergogoi.com/youtube/images/apples.jpeg',
+        type: 'fruits',
+        unit: 1,
+        price: 140,
+        available: true,
+        supplier: 'Golden Seed Farming',
+      };
+    }
 
     switch (event) {
       case 'ADD_TO_CART':
@@ -80,7 +96,7 @@ class ShoppingService {
         data: { userId, order },
       };
 
-      return FormatData(payload);
+      return payload;
     } else {
       return FormatData({ error: 'Order not found' });
     }

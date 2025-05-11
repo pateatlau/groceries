@@ -180,14 +180,6 @@ class CustomerService {
     switch (event) {
       case 'ADD_TO_WISHLIST':
       case 'REMOVE_FROM_WISHLIST':
-        console.log(
-          'ADD_TO_WISHLIST: product = ',
-          product,
-          ', DATA = ',
-          data,
-          ', PAYLOAD = ',
-          payload
-        );
         this.AddToWishlist(userId, product);
         break;
       case 'ADD_TO_CART':
